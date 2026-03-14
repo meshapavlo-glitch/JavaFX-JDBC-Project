@@ -65,6 +65,49 @@ erDiagram
     MOVIE ||..o{ MOVIE_CAST : "has"
     ROLE ||..o{ MOVIE_CAST : "defines"
 ---
+## SQL-запити для створення таблиць бази даних 
+-- Таблиця країн
+CREATE TABLE COUNTRY (
+    country_id BIGSERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL UNIQUE
+);
+
+-- Таблиця фільмів
+CREATE TABLE MOVIE (
+    movie_id BIGSERIAL PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    release_year INTEGER
+);
+
+-- Таблиця акторів
+CREATE TABLE ACTOR (
+    actor_id BIGSERIAL PRIMARY KEY,
+    full_name VARCHAR(255) NOT NULL,
+    birth_date DATE
+);
+
+-- Таблиця ролей
+CREATE TABLE ROLE (
+    role_id BIGSERIAL PRIMARY KEY,
+    role_title VARCHAR(255) NOT NULL
+);
+
+-- Таблиця для зв'язку фільмів та країн 
+CREATE TABLE MOVIE_COUNTRY (
+    movie_id BIGINT REFERENCES MOVIE(movie_id) ON DELETE CASCADE,
+    country_id BIGINT REFERENCES COUNTRY(country_id) ON DELETE CASCADE,
+    PRIMARY KEY (movie_id, country_id)
+);
+
+-- Таблиця акторського складу (Зв'язок Movie + Actor + Role)
+CREATE TABLE MOVIE_CAST (
+    mc_id BIGSERIAL PRIMARY KEY,
+    movie_id BIGINT REFERENCES MOVIE(movie_id) ON DELETE CASCADE,
+    actor_id BIGINT REFERENCES ACTOR(actor_id) ON DELETE CASCADE,
+    role_id BIGINT REFERENCES ROLE(role_id) ON DELETE SET NULL
+);
+
+---
   ##  Опис застосунку 
     Назва: Movie Manager Pro (IMDb Analog)
     Мета: Графічний інтерфейс для керування реляційною базою даних кіноіндустрії.
