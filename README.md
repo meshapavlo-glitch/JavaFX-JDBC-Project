@@ -28,23 +28,13 @@ Developer 2 (@PopovMaksim)** — Максим Попов - розробка GUI 
 ## Схема бази даних (ER-діаграма)
 erDiagram
     
-    COUNTRY {
-        bigint country_id PK
-        string name UK
-    }
-
-    MOVIE {
+  MOVIE {
         bigint movie_id PK
         string title
         int release_year
     }
 
-    MOVIE_COUNTRY {
-        bigint movie_id PK, FK
-        bigint country_id PK, FK
-    }
-
-    ACTOR {
+   ACTOR {
         bigint actor_id PK
         string full_name
         date birth_date
@@ -61,10 +51,7 @@ erDiagram
         bigint actor_id FK
         bigint role_id FK
     }      
-
-    COUNTRY ||--o{ MOVIE_COUNTRY : "involved in"
-    MOVIE ||--o{ MOVIE_COUNTRY : "filmed in"
-    
+          
     ACTOR ||..o{ MOVIE_CAST : "performs"
     MOVIE ||..o{ MOVIE_CAST : "has"
     ROLE ||..o{ MOVIE_CAST : "defines"
@@ -72,11 +59,6 @@ erDiagram
 ---
 
 ## SQL-запити для створення таблиць бази даних 
--- Таблиця країн
-CREATE TABLE COUNTRY (
-    country_id BIGSERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL UNIQUE
-);
 
 -- Таблиця фільмів
 CREATE TABLE MOVIE (
@@ -98,13 +80,6 @@ CREATE TABLE ROLE (
     role_title VARCHAR(255) NOT NULL
 );
 
--- Таблиця для зв'язку фільмів та країн 
-CREATE TABLE MOVIE_COUNTRY (
-    movie_id BIGINT REFERENCES MOVIE(movie_id) ON DELETE CASCADE,
-    country_id BIGINT REFERENCES COUNTRY(country_id) ON DELETE CASCADE,
-    PRIMARY KEY (movie_id, country_id)
-);
-
 -- Таблиця акторського складу (Зв'язок Movie + Actor + Role)
 CREATE TABLE MOVIE_CAST (
     mc_id BIGSERIAL PRIMARY KEY,
@@ -121,12 +96,13 @@ CREATE TABLE MOVIE_CAST (
        - Перегляд: Відображення списку фільмів.
        - CRUD-операції: Додавання, редагування та видалення записів про фільми.
        - Пошук та фільтрація: Швидкий пошук фільмів за назвою, роком випуску або актором.
+       - Перегляд акторского складу: Відображення акторів обраного фільму.
       
 --- 
   ##  Правила злиття гілок (Merge & Pull Request Policy)
     Процес додавання коду розробником:
        - Розробник створює гілку від main.
-       - Після завершення роботи над завданням він робить push своєї гілки на GitHub.
+       - Після завершення роботи над завданням робить push своєї гілки на GitHub.
        - Створює Pull Request (PR) до гілки main.
        - Team Lead переглядає код (Code Review):
            -- Якщо є помилки — пише коментарі для виправлення.
@@ -143,9 +119,9 @@ CREATE TABLE MOVIE_CAST (
 ---    
 
   ##  Як запустити
-1. Переконайтеся, що PostgreSQL запущений.
-2. Налаштуйте доступ у файлі `src/main/resources/db.properties`.
-3. Запустіть клас `org.example.AppLauncher`.
+   1. Переконайтеся, що PostgreSQL запущений.
+   2. Налаштуйте доступ у файлі `src/main/resources/db.properties`.
+   3. Запустіть клас `org.example.AppLauncher`.
 
 ## 📚 Документація
 Технічна документація згенерована за допомогою JavaDoc і знаходиться в папці `target/site/apidocs/index.html`.
