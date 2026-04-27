@@ -1,1 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
 
+<VBox spacing="10" alignment="CENTER" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.controller.MovieController">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label text="Менеджер фільмів" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+
+    <HBox spacing="10" alignment="CENTER">
+        <TextField fx:id="searchTitleField" promptText="Назва фільму"/>
+        <TextField fx:id="searchYearField" promptText="Рік"/>
+        <Button text="Пошук" onAction="#handleSearch"/>
+
+        <Button onAction="#handleAdd" text="Додати" style="-fx-base: #99ff99;" />
+        <Button onAction="#handleShowActors" text=" Актори" style="-fx-base: #87CEEB;" />
+    </HBox>
+
+    <TableView fx:id="movieTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="idColumn" text="ID" prefWidth="50"/>
+            <TableColumn fx:id="titleColumn" text="Назва" prefWidth="200"/>
+            <TableColumn fx:id="yearColumn" text="Рік" prefWidth="100"/>
+        </columns>
+    </TableView>
+
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="Оновити список" onAction="#refreshTable"/>
+        <Button text="Видалити" style="-fx-base: #ff6666;" onAction="#handleDelete"/>
+    </HBox>
+</VBox>
