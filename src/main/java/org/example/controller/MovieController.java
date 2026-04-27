@@ -196,7 +196,7 @@ public class MovieController {
             List<Actor> actors = dbService.getActorsByMovieId(selectedMovie.getId());
 
             // 2. Завантажуємо FXML файл
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/actors.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/examples/actors.fxml"));
             Parent root = loader.load();
 
             // 3. Отримуємо контролер нового вікна та передаємо дані
