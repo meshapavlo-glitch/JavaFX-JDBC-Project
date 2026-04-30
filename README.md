@@ -123,4 +123,4 @@ CREATE TABLE MOVIE_CAST (
    3. Запустіть клас `org.example.AppLauncher`.
 
 ## 📚 Документація
-Технічна документація згенерована за допомогою JavaDoc і знаходиться в папці `target/site/apidocs/index.html`.
+Технічна документація згенерована за допомогою JavaDoc https://meshapavlo-glitch.github.io/JavaFX-JDBC-Project/.
