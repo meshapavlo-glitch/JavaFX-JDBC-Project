@@ -1,7 +1,7 @@
 # JavaFX-JDBC-Project
 JavaFX-JDBC-Project
 
-# Movie Management System (IMDb Analog)
+# Movie Management System 
 
 GUI-додаток на JavaFX для управління базою даних фільмів.
 Побудований на архітектурі **MVC** з використанням **JavaFX** та **PostgreSQL**.
@@ -90,7 +90,7 @@ CREATE TABLE MOVIE_CAST (
 
 ---
   ##  Опис застосунку 
-    Назва: Movie Manager Pro (IMDb Analog)
+    Назва: Movie Manager Pro 
     Мета: Графічний інтерфейс для керування таблицею MOVIE (фільми).
     Основні функції:
        - Перегляд: Відображення списку фільмів.
@@ -107,7 +107,6 @@ CREATE TABLE MOVIE_CAST (
        - Team Lead переглядає код (Code Review):
            -- Якщо є помилки — пише коментарі для виправлення.
            -- Якщо все добре — підтверджує (Approve) і робить Merge.
-       - Після злиття гілка фічі видаляється.
 --- 
   ##  План робіт (Roadmap)
      1.Створення БД та написання SQL-скриптів.
