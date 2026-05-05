@@ -118,11 +118,7 @@ public class DatabaseService {
                 ResultSet rs = stmt.executeQuery(sql)) {
 
             while (rs.next()) {
-                Actor actor = new Actor();
-                actor.setActorId(rs.getLong("actor_id"));
-                actor.setName(rs.getString("full_name"));
-                actors.add(actor);
-            }
+                            }
         }
         return actors;
     }
