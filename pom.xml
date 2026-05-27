@@ -15,6 +15,7 @@
         <javafx.version>21</javafx.version>
     </properties>
 
+
     <dependencies>
         <dependency>
             <groupId>org.openjfx</groupId>
@@ -44,6 +45,21 @@
             <version>5.10.0</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>2.2.224</version> <!-- Переконайтеся, що версія актуальна -->
+            <scope>test</scope>
+        </dependency>  
+
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>5.11.0</version> <!-- Переконайтеся, що версія актуальна, 5.x.x підходить для сучасних версій Java -->
+            <scope>test</scope>
+        </dependency>      
+
     </dependencies>
 
     <build>
